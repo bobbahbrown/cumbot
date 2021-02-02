@@ -6,6 +6,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Impl;
 using Serilog;
@@ -22,6 +23,7 @@ namespace CumBot
         private static IScheduler _scheduler;
         private static IServiceProvider _serviceProvider;
         private static DiscordSocketClient _client;
+        private static ILogger<Program> _logger;
 
         static async Task Main(string[] args)
         {
@@ -55,6 +57,9 @@ namespace CumBot
             var logger = _serviceProvider.GetRequiredService<LogService>();
             _client.Log += logger.LogAsync;
             _serviceProvider.GetRequiredService<CommandService>().Log += logger.LogAsync;
+
+            // Add logging to Program
+            _logger = _serviceProvider.GetRequiredService<ILogger<Program>>();
 
             // Build services provider and register it with the job factory
             _scheduler.JobFactory = new JobFactory(_serviceProvider);
@@ -92,6 +97,7 @@ namespace CumBot
                 await message.AddReactionAsync(new Emoji("\uD83C\uDDE8"));
                 await message.AddReactionAsync(new Emoji("\uD83C\uDDFA"));
                 await message.AddReactionAsync(new Emoji("\uD83C\uDDF2"));
+                _logger.LogInformation($"cummed on '{message.Content}' from {message.Author.Username}#{message.Author.Discriminator} in #{message.Channel.Name}");
             }
         }
 

@@ -12,9 +12,9 @@ namespace CumBot.Jobs
 {
     public class CumJob : IJob
     {
-        static readonly TimeSpan SOMETIMES_LONG_CUM_TIME = new TimeSpan(2, 30, 0);
-        static readonly TimeSpan MAXIMUM_CUM_TIME = new TimeSpan(1, 30, 0);
-        static readonly TimeSpan MINIMUM_CUM_TIME = new TimeSpan(0, 30, 0);
+        static readonly TimeSpan SOMETIMES_LONG_CUM_TIME = new TimeSpan(6, 00, 0);
+        static readonly TimeSpan MAXIMUM_CUM_TIME = new TimeSpan(4, 00, 0);
+        static readonly TimeSpan MINIMUM_CUM_TIME = new TimeSpan(2, 00, 0);
         private readonly IScheduler _scheduler;
         private readonly DiscordSocketClient _client;
         private readonly ILogger<CumJob> _logger;
@@ -48,6 +48,7 @@ namespace CumBot.Jobs
             {
                 var channel = (ISocketMessageChannel)_client.GetChannel(channelId);
                 await channel.SendMessageAsync("cum");
+                _logger.LogInformation($"cummed in <#{channelId}>");
             }
             catch (Exception)
             {
