@@ -37,7 +37,7 @@ namespace CumBot.Jobs
                     if (thisChannel is SocketTextChannel textChannel)
                     {
                         var permissions = botUser.GetPermissions(textChannel);
-                        if (permissions.SendMessages)
+                        if (permissions.SendMessages && permissions.ReadMessages)
                         {
                             await _monitorService.TryMonitorChannel(textChannel.Id);
                         }

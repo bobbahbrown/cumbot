@@ -59,6 +59,9 @@ namespace CumBot
             // Build services provider and register it with the job factory
             _scheduler.JobFactory = new JobFactory(_serviceProvider);
 
+            // Add cummer
+            _client.MessageReceived += CumOnMessage;
+
             // Login
             await _client.LoginAsync(TokenType.Bot, config.Token);
             await _client.StartAsync();
@@ -79,6 +82,17 @@ namespace CumBot
             await _scheduler.Start();
 
             await Task.Delay(-1);
+        }
+
+        static async Task CumOnMessage(SocketMessage message)
+        {
+            var r = new Random();
+            if (r.NextDouble() > 0.98)
+            {
+                await message.AddReactionAsync(new Emoji("\uD83C\uDDE8"));
+                await message.AddReactionAsync(new Emoji("\uD83C\uDDFA"));
+                await message.AddReactionAsync(new Emoji("\uD83C\uDDF2"));
+            }
         }
 
         static void BuildConfiguration(string[] args)

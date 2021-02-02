@@ -12,9 +12,9 @@ namespace CumBot.Jobs
 {
     public class CumJob : IJob
     {
-        static readonly TimeSpan SOMETIMES_LONG_CUM_TIME = new TimeSpan(0, 45, 0);
-        static readonly TimeSpan MAXIMUM_CUM_TIME = new TimeSpan(0, 15, 0);
-        static readonly TimeSpan MINIMUM_CUM_TIME = new TimeSpan(0, 2, 0);
+        static readonly TimeSpan SOMETIMES_LONG_CUM_TIME = new TimeSpan(2, 30, 0);
+        static readonly TimeSpan MAXIMUM_CUM_TIME = new TimeSpan(1, 30, 0);
+        static readonly TimeSpan MINIMUM_CUM_TIME = new TimeSpan(0, 30, 0);
         private readonly IScheduler _scheduler;
         private readonly DiscordSocketClient _client;
         private readonly ILogger<CumJob> _logger;
