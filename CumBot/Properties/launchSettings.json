@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CumBot": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
