@@ -1,6 +1,6 @@
 # cumbot
 
-it says cum every 0.5 - 1.5 but also rarely 0.5 - 2.5 hours in every channel that it can speak in. random timing is per-channel. control cum flow by using permissions to only allow speaking where cum is desired. it also occasionally reacts CUM to people's messages.
+it says cum every 2 - 4 but also rarely 2 - 6 hours in every channel that it can speak in. random timing is per-channel. control cum flow by using permissions to only allow speaking where cum is desired. it also occasionally reacts CUM to people's messages.
 
 ## give me cumbot
 
